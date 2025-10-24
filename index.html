@@ -29,7 +29,10 @@
     .vl-title, .mark-title, .role-title{ color:var(--text) !important; }
     .mark-text, .role-axis-title, .role-axis-label{ fill:var(--text) !important; color:var(--text) !important; }
 
-    @media (min-width:1680px){ .grid{ grid-template-columns:repeat(3,1fr); } }
+    /* Vega container & canvas always fill parent */
+    .vega-embed, .vega-embed > div { width: 100% !important; }
+    .vega-embed canvas { max-width: 100% !important; height: auto !important; }
+    
     @media (min-width:1920px){ .container{ max-width:1760px; } .card{ min-height:420px; } }
   </style>
 </head>
@@ -130,6 +133,18 @@
 
     selects.forEach(s => s.addEventListener("change", render));
     render();
+    // prosta funkcja debounce, żeby nie renderować setki razy
+function debounce(fn, ms=150){
+  let t; 
+  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+}
+
+// obserwuj zmiany rozmiaru kontenera z chartami
+const ro = new ResizeObserver(debounce(() => render(), 150));
+ro.observe(document.querySelector('.grid'));
+
+// na wszelki wypadek także zdarzenie window resize
+window.addEventListener('resize', debounce(render, 150));
   </script>
 </body>
 </html>
