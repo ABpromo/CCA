@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <style>
-    :root{ --bg:#F5A376; --card:#F5A376; --muted:#EAE7DC; --text:#EAE7DC; --border:#f3af8a; }
+    :root{ --bg:#d1d1d1; --card:#F5A376; --muted:#EAE7DC; --text:#EAE7DC; --border:#f3af8a; }
     html,body{ margin:0; background:var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
     .container{ max-width:min(1700px,96vw); margin:0 auto; padding:24px; }
     header h1{ margin:0 0 8px 0; font-size:28px; line-height:1.2; }
@@ -104,7 +104,7 @@
           tooltip:[{ aggregate:"count", title:"Cases" }, { field: field }]
         },
         title:{ text:title, color:"#EAE7DC" },
-        config:{ background:"#F5A376",
+        config:{ background:"#d1d1d1",
     axis: { labelColor: '#EAE7DC', titleColor: '#EAE7DC' },
     legend: { labelColor: '#EAE7DC', titleColor: '#EAE7DC' },
     view:{ stroke:"#f3af8a" },
